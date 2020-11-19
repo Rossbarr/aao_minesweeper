@@ -5,6 +5,8 @@ import random
 class Grid():
     def __init__(self, size = [9, 9]):
         self.fill_grid(size)
+        self.place_bombs()
+        self.place_nums()
 
     def size(self):
         return np.prod(self.grid.shape)
@@ -13,9 +15,9 @@ class Grid():
         self.grid = np.empty(size, dtype = type(Tile))
         for i in range(len(self.grid)):
             for j in range(len(self.grid[0])):
-                self.grid[i,j] = Tile()
+                self.grid[i,j] = Tile() #revealed = True)
 
-    def place_bombs(self, difficulty = "medium"):
+    def place_bombs(self):
         for i in range(len(self.grid)):
             for j in range(len(self.grid[0])):
                 if random.random() < 0.10:
@@ -36,7 +38,13 @@ class Grid():
                 self.grid[i, j].value += 1
 
     def render(self):
+        print("   ", end = "")
+        for j in range(len(self.grid[0])):
+             print(j, end = " ")
+        
+        print("\n------------------------")
         for i in range(len(self.grid)):
+            print("{}| ".format(i), end = "")
             for j in range(len(self.grid[0])):
                 if self.grid[i, j].revealed:
                     print("{} ".format(self.grid[i, j].value), end = "")
@@ -44,14 +52,6 @@ class Grid():
                     print("  ", end = "")
             print("\n")
 
-
-
-
 if __name__ == "__main__":
-    print(type(Tile()))
     g = Grid()
-    g.render()
-    g.place_bombs()
-    g.render()
-    g.place_nums()
     g.render()

@@ -1,5 +1,5 @@
 class Tile():
-    def __init__(self, value = 0, revealed = True):
+    def __init__(self, value = 0, revealed = False):
         """
         The only two variables necessary are revealed and value:
         
