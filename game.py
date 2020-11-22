@@ -8,7 +8,7 @@ class Game():
         print("hello?")
         while not self.grid.solved():
             self.grid.render()
-            pos = input("Enter a position (e.g. '4 5'): ")
+            pos = input("Enter a position in 'row col' format (e.g. '4 5'): ")
             pos = self.parse_pos(pos)
             val = input("Enter a command (flag - 'F', click - 'C'): ")
             val = self.parse_val(val)
